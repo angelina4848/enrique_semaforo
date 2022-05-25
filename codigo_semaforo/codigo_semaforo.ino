@@ -23,10 +23,7 @@ void loop() {
   digitalWrite(yellow, 1);
   digitalWrite(red, 1);
   if(digitalRead(button) == 0){
-  digitalWrite(green, 1);
-  digitalWrite(yellow, 0);
-  digitalWrite(red, 1);
-  delay(interval*1000);
+yellowb();
   digitalWrite(green, 1);
   digitalWrite(yellow, 1);
   digitalWrite(red, 0);
@@ -34,11 +31,17 @@ void loop() {
   while(digitalRead(button) != 0){
     delay(50);
   }
-  digitalWrite(green, 1);
-  digitalWrite(yellow, 0);
-  digitalWrite(red, 1);
-  delay(interval*1000);
+yellowb();
   }
   
 
+}
+void yellowb(){
+    digitalWrite(green, 1);
+  digitalWrite(red, 1);
+  digitalWrite(yellow, 1);
+  for(int i; i < interval; i++){
+    digitalWrite(yellow, (!digitalRead(yellow)));
+    delay(1000);
+  }
 }
